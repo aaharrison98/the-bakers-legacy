@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Baker's Legacy | Handcrafted Artisanal Baked Goods</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" onclick="navigateTo('home')">
+        <span>The Baker's Legacy</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-page="home" onclick="navigateTo('home')">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="shop" onclick="navigateTo('shop')">Shop</a></li>
+        <li><a href="#" class="nav-link" data-page="about" onclick="navigateTo('about')">About</a></li>
+        <li><a href="#" class="nav-link" data-page="contact" onclick="navigateTo('contact')">Contact</a></li>
+      </ul>
+      <button class="cart-icon-btn" onclick="toggleCart(true)" aria-label="View Shopping Cart">
+        🛒
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <section id="home" class="page-section active">
+    <header class="hero-section">
+      <div class="hero-content">
+        <h1>Handcrafted Sweets, Timeless Recipe Traditions</h1>
+        <p>Baked fresh daily using whole ingredients, family heritage recipes, and standard-setting artisanal perfection.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="navigateTo('shop')">Explore Shop</button>
+          <button class="btn btn-outline" onclick="navigateTo('about')">Our Story</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="home-features">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Pure Ingredients</h3>
+            <p>Real butter, organic cane sugar, rich vanilla beans, and non-GMO legacy flour.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🍰</div>
+            <h3>Baked Fresh Daily</h3>
+            <p>Every single batch is crafted in small quantities right before shipping or pickup.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Preview -->
+    <section class="container" style="padding: 4rem 1.5rem;">
+      <div class="section-title">
+        <h2>Customer Favorites</h2>
+        <p>A selection of our signature baked goods</p>
+      </div>
+      <div class="product-grid" id="featuredProductGrid">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </section>
+  </section>
+
+  <!-- SHOP PAGE -->
+  <section id="shop" class="page-section">
+    <div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+      <div class="section-title">
+        <h2>Our Bakery Catalog</h2>
+        <p>Choose your favorite sweet treats by the dozen or by the whole pan</p>
+      </div>
+      <div class="product-grid" id="mainProductGrid">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PAGE -->
+  <section id="about" class="page-section">
+    <div class="container" style="padding-top: 4rem; padding-bottom: 5rem;">
+      <div class="about-hero">
+        <div>
+          <span style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; font-weight: 600;">Since 1984</span>
+          <h2 style="font-size: 2.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">Preserving the Art of Traditional Baking</h2>
+          <p style="margin-bottom: 1rem; color: #555;">The Baker's Legacy was born out of a small home kitchen filled with hand-written recipe cards, flour-dusted countertops, and an uncompromising dedication to warmth and flavor.</p>
+          <p style="margin-bottom: 1.5rem; color: #555;">What started as recipes passed down through three generations has grown into an online bakery that brings nostalgic, comfort-filled baked goods straight to your doorstep.</p>
+        </div>
+        <div class="about-img-container">
+          <!-- REPLACE IMAGE SOURCE BELOW -->
+          <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&q=80&w=800" alt="Baker preparing dough">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PAGE -->
+  <section id="contact" class="page-section">
+    <div class="container" style="padding-top: 4rem; padding-bottom: 5rem;">
+      <div class="section-title">
+        <h2>Reach Out & Connect</h2>
+        <p>Have questions about bulk custom orders, catering, or ingredients? Send us a message!</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p style="margin-bottom: 1.5rem; color: rgba(240,236,229,0.8);">We love connecting with fellow dessert lovers. Drop us a note and our baking team will respond within 24 hours.</p>
+          
+          <div style="margin-bottom: 1rem;">
+            <strong>Email Enquiries:</strong>
+            <p style="color: rgba(240,236,229,0.8);">orders@thebakerslegacy.com</p>
+          </div>
+          <div>
+            <strong>Phone Support:</strong>
+            <p style="color: rgba(240,236,229,0.8);">(555) 234-5678</p>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="contactName">Full Name</label>
+              <input type="text" id="contactName" class="form-control" required placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" class="form-control" required placeholder="jane@example.com">
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" class="form-control" required placeholder="Inquiry about custom order">
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" class="form-control" rows="5" required placeholder="How can we help you?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT PAGE -->
+  <section id="checkout" class="page-section">
+    <div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+      <div class="section-title">
+        <h2>Complete Your Order</h2>
+        <p>Review your selection and enter your delivery details</p>
+      </div>
+
+      <div class="checkout-layout">
+        <div>
+          <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
+            <div class="checkout-section">
+              <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">1. Shipping Information</h3>
+              <div class="form-group">
+                <label for="shipName">Full Name</label>
+                <input type="text" id="shipName" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="shipEmail">Email Address</label>
+                <input type="email" id="shipEmail" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="shipAddress">Street Address</label>
+                <input type="text" id="shipAddress" class="form-control" required>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label for="shipCity">City</label>
+                  <input type="text" id="shipCity" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="shipZip">ZIP / Postal Code</label>
+                  <input type="text" id="shipZip" class="form-control" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-section">
+              <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">2. Payment Details</h3>
+              <div class="form-group">
+                <label for="cardNum">Card Number</label>
+                <input type="text" id="cardNum" class="form-control" placeholder="4532 •••• •••• 8890" required>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label for="cardExp">Expiry Date</label>
+                  <input type="text" id="cardExp" class="form-control" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                  <label for="cardCvc">CVC Code</label>
+                  <input type="text" id="cardCvc" class="form-control" placeholder="123" required>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Place Order Now</button>
+          </form>
+        </div>
+
+        <div>
+          <div class="checkout-section" style="position: sticky; top: 100px;">
+            <h3 style="margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">Order Summary</h3>
+            <div id="checkoutSummaryList">
+              <!-- Dynamically Populated -->
+            </div>
+            <div style="margin-top: 1.5rem; border-top: 1px solid #eee; padding-top: 1rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span>Subtotal</span>
+                <span id="checkoutSubtotal">$0.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span>Estimated Tax (8%)</span>
+                <span id="checkoutTax">$0.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; margin-top: 0.5rem; color: #2D3433;">
+                <span>Total</span>
+                <span id="checkoutTotal">$0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Bakery Cart</h3>
+      <button class="close-cart-btn" onclick="toggleCart(false)">&times;</button>
+    </div>
+    <div class="cart-body" id="cartBody">
+      <!-- Dynamic cart items list -->
+    </div>
+    <div class="cart-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-weight: 700; font-size: 1.1rem;">
+        <span>Subtotal:</span>
+        <span id="cartDrawerSubtotal">$0.00</span>
+      </div>
+      <button class="btn btn-primary" style="width: 100%;" onclick="goToCheckout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notification" id="toast">Item added to cart!</div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3 style="font-family: 'Cinzel', serif; margin-bottom: 0.75rem;">The Baker's Legacy</h3>
+        <p style="color: rgba(240,236,229,0.7); font-size: 0.9rem;">Crafting artisanal memories one baked good at a time.</p>
+      </div>
+      <div>
+        <h4 style="margin-bottom: 0.75rem;">Quick Links</h4>
+        <ul style="list-style: none;">
+          <li><a href="#" onclick="navigateTo('home')" style="color: rgba(240,236,229,0.7); text-decoration: none;">Home</a></li>
+          <li><a href="#" onclick="navigateTo('shop')" style="color: rgba(240,236,229,0.7); text-decoration: none;">Shop Bakery</a></li>
+          <li><a href="#" onclick="navigateTo('about')" style="color: rgba(240,236,229,0.7); text-decoration: none;">Our Story</a></li>
+          <li><a href="#" onclick="navigateTo('contact')" style="color: rgba(240,236,229,0.7); text-decoration: none;">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align: center; border-top: 1px solid rgba(240,236,229,0.1); padding-top: 1.5rem; margin-top: 2rem; color: rgba(240,236,229,0.5); font-size: 0.85rem;">
+      © 2026 The Baker's Legacy. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
